@@ -108,6 +108,12 @@
       margin-bottom: 6px;
     }
 
+    document
+  .getElementById("tripleEForm")
+  .addEventListener("submit", function(event) {
+    event.preventDefault();
+  });
+    
     input[type="text"],
     textarea {
       width: 100%;
@@ -615,7 +621,28 @@
   </div>
 </details>
   
+<details class="collapse-section">
+  <summary>Personvern</summary>
 
+  <div class="collapse-content">
+    <p>
+      Opplysningane du skriv inn i dette skjemaet, blir behandla lokalt
+      i nettlesaren din. Dei blir ikkje sende til eller lagra av
+      denne nettsida.
+    </p>
+
+    <p>
+      Unngå å skriva namn eller andre personopplysningar om elevar,
+      studentar eller andre personar i tekstfelta.
+    </p>
+
+    <p>
+      Nettsida er publisert med GitHub Pages. GitHub kan registrera
+      tekniske opplysningar, som IP-adresse, i samband med drift og
+      tryggleik for tenesta.
+    </p>
+  </div>
+</details>
 
     <!-- KNAPPAR -->
 
