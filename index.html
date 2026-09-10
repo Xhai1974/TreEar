@@ -63,12 +63,13 @@
       font-size: 1.35rem;
     }
 
-    .reflection-collapse {
-  margin-top: 40px;
+.collapse-section {
+  margin-top: 30px;
+  margin-bottom: 30px;
   border: none;
 }
 
-.reflection-collapse summary {
+.collapse-section summary {
   padding: 12px 15px;
   background: var(--primary-light);
   border-left: 5px solid var(--primary);
@@ -78,11 +79,11 @@
   list-style-position: inside;
 }
 
-.reflection-collapse summary:hover {
+.collapse-section summary:hover {
   background: #dcecf5;
 }
 
-.reflection-content {
+.collapse-content {
   padding: 20px 15px 5px 15px;
   border: 1px solid var(--border);
   border-top: none;
@@ -310,7 +311,12 @@
 
   <form id="tripleEForm">
 
-    <!-- Bakgrunnsinformasjon -->
+<!-- OM UNDERVISNINGSOPPLEGGET -->
+
+<details class="collapse-section">
+  <summary>Om undervisningsopplegget</summary>
+
+  <div class="collapse-content">
 
     <div class="form-group">
       <label for="fag">Fag / tema</label>
@@ -336,6 +342,9 @@
       <label for="aktivitet">Kort skildring av undervisningsaktiviteten</label>
       <textarea id="aktivitet" name="aktivitet"></textarea>
     </div>
+
+  </div>
+</details>
 
 
     <!-- ENGAGEMENT -->
@@ -576,10 +585,10 @@
 
 <!-- REFLEKSJON -->
 
-<details class="reflection-collapse">
+<details class="collapse-section">
   <summary>Kort refleksjon</summary>
 
-  <div class="reflection-content">
+  <div class="collapse-content">
 
     <div class="form-group">
       <label for="ref1">
