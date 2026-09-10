@@ -3,1058 +3,910 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="description" content="Triple E – vurderingsskjema for undervisningsdesign. Eit nynorsk refleksjonsverktøy for vurdering av digital teknologi i undervisning.">
   <title>Triple E – vurderingsskjema for undervisningsdesign</title>
 
-  :root {
-  /* HVL-profil */
-  --hvl-dark: #004357;
-  --hvl-turquoise: #00AFBA;
-  --hvl-blue: #008AAF;
-  --hvl-green: #009382;
-  --hvl-light-green: #96DE99;
-  --hvl-light-blue: #64D0DF;
-  --hvl-yellow: #F9DE45;
-  --hvl-orange: #EB6851;
-
-  --hvl-grey-dark: #707B7B;
-  --hvl-grey: #ACB7B2;
-  --hvl-grey-light: #C9D5DA;
-
-  --background: #ffffff;
-  --card: #ffffff;
-  --text: #16333d;
-  --muted: #53666c;
-  --border: #d5dfe2;
-  --surface: #f3f7f8;
-
-  /* Trafikklys */
-  --green: #006f62;
-  --green-bg: #e5f5ef;
-
-  --yellow: #654f00;
-  --yellow-bg: #fff8d5;
-
-  --red: #9b392b;
-  --red-bg: #fcebe7;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  background: #ffffff;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background: var(--background);
-  color: var(--text);
-
-  /*
-    Trygge systemfontar.
-    Dersom HVL sine profilfontar seinare blir gjort
-    tilgjengelege som godkjende webfontar, kan dei
-    leggjast inn her.
-  */
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 17px;
-  line-height: 1.6;
-}
-
-/* -------------------------------------------------
-   HOVUDRAMME
-------------------------------------------------- */
-
-.triple-e {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0 48px 60px;
-  background: #ffffff;
-  box-shadow: none;
-  border-radius: 0;
-}
-
-/* HVL-farga toppmarkering */
-
-.triple-e::before {
-  content: "";
-  display: block;
-  height: 10px;
-  margin: 0 -48px 48px;
-  background:
-    linear-gradient(
-      90deg,
-      var(--hvl-turquoise) 0%,
-      var(--hvl-turquoise) 55%,
-      var(--hvl-dark) 55%,
-      var(--hvl-dark) 100%
-    );
-}
-
-/* -------------------------------------------------
-   TYPOGRAFI
-------------------------------------------------- */
-
-h1,
-h2,
-h3,
-summary,
-button,
-label,
-th {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-h1 {
-  max-width: 850px;
-  margin: 0 0 18px;
-  color: var(--hvl-dark);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-  line-height: 1.12;
-  letter-spacing: -0.02em;
-}
-
-.intro {
-  max-width: 780px;
-  margin: 0 0 48px;
-  color: var(--text);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.15rem;
-  line-height: 1.65;
-}
-
-h2 {
-  margin: 55px 0 22px;
-  padding: 0 0 10px;
-  background: transparent;
-  border: 0;
-  border-bottom: 3px solid var(--hvl-turquoise);
-  color: var(--hvl-dark);
-  font-size: 1.55rem;
-  line-height: 1.3;
-}
-
-h3 {
-  margin-top: 30px;
-  color: var(--hvl-dark);
-}
-
-/* -------------------------------------------------
-   COLLAPSE-MENYAR
-------------------------------------------------- */
-
-.collapse-section {
-  margin: 28px 0 42px;
-  border: 1px solid var(--hvl-grey-light);
-  border-radius: 0;
-  background: #ffffff;
-}
-
-.collapse-section summary {
-  position: relative;
-  padding: 18px 56px 18px 22px;
-  background: var(--hvl-dark);
-  color: #ffffff;
-  font-size: 1.25rem;
-  font-weight: 700;
-  cursor: pointer;
-  list-style: none;
-}
-
-.collapse-section summary::-webkit-details-marker {
-  display: none;
-}
-
-.collapse-section summary::after {
-  content: "+";
-  position: absolute;
-  right: 22px;
-  top: 50%;
-  transform: translateY(-52%);
-  color: var(--hvl-light-blue);
-  font-size: 1.8rem;
-  font-weight: 400;
-}
-
-.collapse-section[open] summary::after {
-  content: "−";
-}
-
-.collapse-section summary:hover {
-  background: #00536a;
-}
-
-.collapse-section summary:focus-visible {
-  outline: 4px solid var(--hvl-yellow);
-  outline-offset: 3px;
-}
-
-.collapse-content {
-  padding: 28px 24px 10px;
-  border: 0;
-}
-
-/* -------------------------------------------------
-   SKJEMAFELT
-------------------------------------------------- */
-
-.form-group {
-  margin-bottom: 24px;
-}
-
-label {
-  display: block;
-  margin-bottom: 7px;
-  color: var(--hvl-dark);
-  font-weight: 700;
-}
-
-input[type="text"],
-textarea {
-  width: 100%;
-  padding: 12px 14px;
-  border: 1.5px solid #9eafb4;
-  border-radius: 0;
-  background: #ffffff;
-  color: var(--text);
-  font: inherit;
-  transition:
-    border-color 0.15s ease,
-    box-shadow 0.15s ease;
-}
-
-input[type="text"]:focus,
-textarea:focus {
-  border-color: var(--hvl-blue);
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(0, 138, 175, 0.18);
-}
-
-textarea {
-  min-height: 105px;
-  resize: vertical;
-}
-
-/* -------------------------------------------------
-   TABELLAR
-------------------------------------------------- */
-
-table {
-  width: 100%;
-  margin: 18px 0;
-  border-collapse: collapse;
-  border-spacing: 0;
-  background: #ffffff;
-}
-
-th,
-td {
-  padding: 15px 13px;
-  border: 1px solid var(--border);
-  vertical-align: top;
-}
-
-th {
-  background: var(--hvl-dark);
-  color: #ffffff;
-  text-align: left;
-  font-size: 0.95rem;
-  font-weight: 700;
-}
-
-tbody tr:nth-child(even) {
-  background: #f6f9fa;
-}
-
-tbody tr:hover {
-  background: #edf7f8;
-}
-
-th.score,
-td.score {
-  width: 90px;
-  text-align: center;
-  vertical-align: middle;
-}
-
-input[type="radio"] {
-  width: 22px;
-  height: 22px;
-  cursor: pointer;
-  accent-color: var(--hvl-turquoise);
-}
-
-/* -------------------------------------------------
-   DELSUM
-------------------------------------------------- */
-
-.subtotal {
-  display: inline-block;
-  margin: 6px 0 30px;
-  padding: 10px 18px;
-  background: var(--hvl-grey-light);
-  border-left: 5px solid var(--hvl-dark);
-  border-radius: 0;
-  color: var(--hvl-dark);
-  font-weight: 700;
-}
-
-/* -------------------------------------------------
-   SAMLA RESULTAT
-------------------------------------------------- */
-
-.resultat {
-  margin-top: 28px;
-  padding: 32px;
-  border: 0;
-  border-top: 8px solid var(--hvl-turquoise);
-  background: var(--surface);
-  border-radius: 0;
-  text-align: center;
-}
-
-.resultat > div:not(.totalsum):not(.trafikklys) {
-  margin: 4px 0;
-}
-
-.totalsum {
-  margin: 22px 0;
-  color: var(--hvl-dark);
-  font-size: 2rem;
-  font-weight: 700;
-}
-
-.trafikklys {
-  padding: 20px;
-  border-radius: 0;
-  font-size: 1.05rem;
-  font-weight: 600;
-}
-
-/* Triple E-resultatet brukar HVL-paletten,
-   men held semantikken grøn / gul / raud */
-
-.green {
-  background: var(--green-bg);
-  color: var(--green);
-  border: 2px solid var(--hvl-green);
-}
-
-.yellow {
-  background: var(--yellow-bg);
-  color: var(--yellow);
-  border: 2px solid var(--hvl-yellow);
-}
-
-.red {
-  background: var(--red-bg);
-  color: var(--red);
-  border: 2px solid var(--hvl-orange);
-}
-
-.incomplete {
-  background: #edf2f3;
-  color: var(--hvl-grey-dark);
-  border: 2px solid var(--hvl-grey);
-}
-
-/* -------------------------------------------------
-   FORKLARING AV TRAFIKKLYS
-------------------------------------------------- */
-
-.legend {
-  margin-top: 28px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-}
-
-.legend-item {
-  margin: 0;
-  padding: 18px;
-  border-radius: 0;
-}
-
-/* -------------------------------------------------
-   KNAPPAR
-------------------------------------------------- */
-
-.buttons {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  margin-top: 40px;
-}
-
-button {
-  appearance: none;
-  min-height: 48px;
-  padding: 12px 22px;
-  border: 2px solid var(--hvl-dark);
-  border-radius: 0;
-  background: var(--hvl-dark);
-  color: #ffffff;
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition:
-    background 0.15s ease,
-    color 0.15s ease;
-}
-
-button:hover {
-  background: var(--hvl-turquoise);
-  border-color: var(--hvl-turquoise);
-  opacity: 1;
-}
-
-button.secondary {
-  background: #ffffff;
-  color: var(--hvl-dark);
-}
-
-button.secondary:hover {
-  background: var(--hvl-grey-light);
-}
-
-button:focus-visible {
-  outline: 4px solid var(--hvl-yellow);
-  outline-offset: 3px;
-}
-
-/* -------------------------------------------------
-   FOOTER
-------------------------------------------------- */
-
-footer {
-  margin-top: 60px;
-  padding: 24px 0;
-  border-top: 3px solid var(--hvl-turquoise);
-  color: var(--muted);
-  font-size: 0.9rem;
-  line-height: 1.6;
-}
-
-/* -------------------------------------------------
-   MOBIL
-------------------------------------------------- */
-
-@media (max-width: 800px) {
-
-  .triple-e {
-    padding: 0 20px 40px;
-  }
-
-  .triple-e::before {
-    margin: 0 -20px 32px;
-    height: 8px;
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
-
-  .intro {
-    font-size: 1.05rem;
-    margin-bottom: 32px;
-  }
-
-  h2 {
-    margin-top: 42px;
-    font-size: 1.3rem;
-  }
-
-  table {
-    font-size: 0.9rem;
-  }
-
-  th,
-  td {
-    padding: 10px 7px;
-  }
-
-  th.score,
-  td.score {
-    width: 58px;
-  }
-
-  .legend {
-    grid-template-columns: 1fr;
-  }
-
-  .resultat {
-    padding: 22px 15px;
-  }
-
-  .collapse-content {
-    padding: 20px 16px 5px;
-  }
-}
-
-/* -------------------------------------------------
-   UTSKRIFT / PDF
-------------------------------------------------- */
-
-@media print {
-
-  body {
-    background: white;
-  }
-
-  .triple-e {
-    max-width: none;
-    padding: 0;
-  }
-
-  .triple-e::before {
-    margin: 0 0 25px;
-  }
-
-  .buttons {
-    display: none;
-  }
-
-  .collapse-section {
-    border: 0;
-  }
-
-  .collapse-section summary {
-    background: transparent;
-    color: var(--hvl-dark);
-    padding-left: 0;
-    border-bottom: 2px solid var(--hvl-turquoise);
-  }
-
-  .collapse-section summary::after {
-    display: none;
-  }
-
-  .collapse-content {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .legend {
-    display: block;
-  }
-
-  .legend-item {
-    margin-bottom: 10px;
-  }
-}
+  <style>
+    :root {
+      /* HVL-inspirert profil */
+      --hvl-dark: #004357;
+      --hvl-turquoise: #00AFBA;
+      --hvl-blue: #008AAF;
+      --hvl-green: #009382;
+      --hvl-light-blue: #64D0DF;
+      --hvl-yellow: #F9DE45;
+      --hvl-orange: #EB6851;
+      --hvl-grey-dark: #707B7B;
+      --hvl-grey: #ACB7B2;
+      --hvl-grey-light: #C9D5DA;
+
+      --background: #ffffff;
+      --text: #16333d;
+      --muted: #53666c;
+      --border: #d5dfe2;
+      --surface: #f3f7f8;
+
+      /* Resultatfargar */
+      --green: #006f62;
+      --green-bg: #e5f5ef;
+      --yellow: #654f00;
+      --yellow-bg: #fff8d5;
+      --red: #9b392b;
+      --red-bg: #fcebe7;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--background);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--hvl-blue);
+    }
+
+    a:hover {
+      text-decoration-thickness: 2px;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    summary:focus-visible {
+      outline: 4px solid var(--hvl-yellow);
+      outline-offset: 3px;
+    }
+
+    .triple-e {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 48px 64px;
+      background: #ffffff;
+    }
+
+    .triple-e::before {
+      content: "";
+      display: block;
+      height: 10px;
+      margin: 0 -48px 48px;
+      background: linear-gradient(
+        90deg,
+        var(--hvl-turquoise) 0%,
+        var(--hvl-turquoise) 55%,
+        var(--hvl-dark) 55%,
+        var(--hvl-dark) 100%
+      );
+    }
+
+    h1,
+    h2,
+    h3,
+    summary,
+    button,
+    label,
+    th {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    h1 {
+      max-width: 900px;
+      margin: 0 0 18px;
+      color: var(--hvl-dark);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+    }
+
+    .intro {
+      max-width: 820px;
+      margin: 0 0 42px;
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.15rem;
+      line-height: 1.65;
+    }
+
+    h2 {
+      margin: 56px 0 22px;
+      padding: 0 0 10px;
+      border-bottom: 3px solid var(--hvl-turquoise);
+      color: var(--hvl-dark);
+      font-size: 1.55rem;
+      line-height: 1.3;
+    }
+
+    h3 {
+      color: var(--hvl-dark);
+    }
+
+    .collapse-section {
+      margin: 28px 0 42px;
+      border: 1px solid var(--hvl-grey-light);
+      background: #ffffff;
+    }
+
+    .collapse-section summary {
+      position: relative;
+      padding: 18px 58px 18px 22px;
+      background: var(--hvl-dark);
+      color: #ffffff;
+      font-size: 1.25rem;
+      font-weight: 700;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .collapse-section summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .collapse-section summary::after {
+      content: "+";
+      position: absolute;
+      right: 22px;
+      top: 50%;
+      transform: translateY(-52%);
+      color: var(--hvl-light-blue);
+      font-size: 1.8rem;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .collapse-section[open] summary::after {
+      content: "−";
+    }
+
+    .collapse-section summary:hover {
+      background: #00536a;
+    }
+
+    .collapse-content {
+      padding: 28px 24px 10px;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--hvl-dark);
+      font-weight: 700;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid #9eafb4;
+      border-radius: 0;
+      background: #ffffff;
+      color: var(--text);
+      font: inherit;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus {
+      border-color: var(--hvl-blue);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(0, 138, 175, 0.18);
+    }
+
+    textarea {
+      min-height: 105px;
+      resize: vertical;
+    }
+
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+      width: 100%;
+      min-width: 680px;
+      margin: 18px 0;
+      border-collapse: collapse;
+      background: #ffffff;
+    }
+
+    th,
+    td {
+      padding: 15px 13px;
+      border: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--hvl-dark);
+      color: #ffffff;
+      text-align: left;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f6f9fa;
+    }
+
+    tbody tr:hover {
+      background: #edf7f8;
+    }
+
+    th.score,
+    td.score {
+      width: 90px;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    input[type="radio"] {
+      width: 22px;
+      height: 22px;
+      margin: 0;
+      cursor: pointer;
+      accent-color: var(--hvl-turquoise);
+    }
+
+    .subtotal {
+      display: inline-block;
+      margin: 6px 0 30px;
+      padding: 10px 18px;
+      background: var(--hvl-grey-light);
+      border-left: 5px solid var(--hvl-dark);
+      color: var(--hvl-dark);
+      font-weight: 700;
+    }
+
+    .resultat {
+      margin-top: 28px;
+      padding: 32px;
+      border-top: 8px solid var(--hvl-turquoise);
+      background: var(--surface);
+      text-align: center;
+    }
+
+    .resultat > div:not(.totalsum):not(.trafikklys) {
+      margin: 4px 0;
+    }
+
+    .totalsum {
+      margin: 22px 0;
+      color: var(--hvl-dark);
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .trafikklys {
+      padding: 20px;
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .green {
+      background: var(--green-bg);
+      color: var(--green);
+      border: 2px solid var(--hvl-green);
+    }
+
+    .yellow {
+      background: var(--yellow-bg);
+      color: var(--yellow);
+      border: 2px solid var(--hvl-yellow);
+    }
+
+    .red {
+      background: var(--red-bg);
+      color: var(--red);
+      border: 2px solid var(--hvl-orange);
+    }
+
+    .incomplete {
+      background: #edf2f3;
+      color: var(--hvl-grey-dark);
+      border: 2px solid var(--hvl-grey);
+    }
+
+    .legend {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .legend-item {
+      margin: 0;
+      padding: 18px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 40px;
+    }
+
+    button {
+      appearance: none;
+      min-height: 48px;
+      padding: 12px 22px;
+      border: 2px solid var(--hvl-dark);
+      border-radius: 0;
+      background: var(--hvl-dark);
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+
+    button:hover {
+      border-color: var(--hvl-turquoise);
+      background: var(--hvl-turquoise);
+    }
+
+    button.secondary {
+      background: #ffffff;
+      color: var(--hvl-dark);
+    }
+
+    button.secondary:hover {
+      border-color: var(--hvl-dark);
+      background: var(--hvl-grey-light);
+    }
+
+    footer {
+      margin-top: 60px;
+      padding: 24px 0;
+      border-top: 3px solid var(--hvl-turquoise);
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 800px) {
+      .triple-e {
+        padding: 0 20px 40px;
+      }
+
+      .triple-e::before {
+        height: 8px;
+        margin: 0 -20px 32px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .intro {
+        margin-bottom: 32px;
+        font-size: 1.05rem;
+      }
+
+      h2 {
+        margin-top: 42px;
+        font-size: 1.3rem;
+      }
+
+      .legend {
+        grid-template-columns: 1fr;
+      }
+
+      .resultat {
+        padding: 22px 15px;
+      }
+
+      .collapse-content {
+        padding: 20px 16px 5px;
+      }
+    }
+
+    @media print {
+      @page {
+        margin: 14mm;
+      }
+
+      body {
+        background: white;
+        color: #000000;
+        font-size: 11pt;
+      }
+
+      .triple-e {
+        max-width: none;
+        padding: 0;
+      }
+
+      .triple-e::before {
+        height: 5px;
+        margin: 0 0 20px;
+      }
+
+      .buttons {
+        display: none;
+      }
+
+      .collapse-section {
+        break-inside: avoid;
+        border: 0;
+      }
+
+      .collapse-section summary {
+        padding-left: 0;
+        border-bottom: 2px solid var(--hvl-turquoise);
+        background: transparent;
+        color: var(--hvl-dark);
+      }
+
+      .collapse-section summary::after {
+        display: none;
+      }
+
+      .collapse-content {
+        padding-right: 0;
+        padding-left: 0;
+      }
+
+      .table-wrap {
+        overflow: visible;
+      }
+
+      table {
+        min-width: 0;
+        font-size: 9.5pt;
+      }
+
+      tr,
+      .resultat,
+      .legend-item {
+        break-inside: avoid;
+      }
+
+      .legend {
+        display: block;
+      }
+
+      .legend-item {
+        margin-bottom: 10px;
+      }
+
+      footer a {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
-
-<main class="triple-e">
-
-  <h1>Triple E – vurderingsskjema for undervisningsdesign</h1>
-
-  <p class="intro">
-    Skjemaet kan brukast til å vurdera i kva grad bruk av digital teknologi
-    tilfører verdi til læringa og støttar dei faglege læringsmåla.
-    Vurder kvart punkt med 0, 1 eller 2 poeng.
-  </p>
-
-  <form id="tripleEForm">
-
-<!-- OM UNDERVISNINGSOPPLEGGET -->
-
-<details class="collapse-section">
-  <summary>Om undervisningsopplegget</summary>
-
-  <div class="collapse-content">
-
-    <div class="form-group">
-      <label for="fag">Fag / tema</label>
-      <input type="text" id="fag" name="fag">
-    </div>
-
-    <div class="form-group">
-      <label for="trinn">Trinn / målgruppe</label>
-      <input type="text" id="trinn" name="trinn">
-    </div>
-
-    <div class="form-group">
-      <label for="maal">Læringsmål</label>
-      <textarea id="maal" name="maal"></textarea>
-    </div>
-
-    <div class="form-group">
-      <label for="teknologi">Digital teknologi / digitalt verktøy</label>
-      <textarea id="teknologi" name="teknologi"></textarea>
-    </div>
-
-    <div class="form-group">
-      <label for="aktivitet">Kort skildring av undervisningsaktiviteten</label>
-      <textarea id="aktivitet" name="aktivitet"></textarea>
-    </div>
-
-  </div>
-</details>
-
-
-    <!-- ENGAGEMENT -->
-
-    <section>
-      <h2>1. <em>Engagement</em>em> – engasjement i læringa</h2>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Vurderingspunkt</th>
-            <th class="score">0<br>Nei</th>
-            <th class="score">1<br>Delvis</th>
-            <th class="score">2<br>Ja</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>
-              Den digitale teknologien hjelper elevane/studentane med å halda
-              merksemda retta mot oppgåva, aktiviteten og læringsmåla,
-              med mindre distraksjon.
-            </td>
-            <td class="score"><input type="radio" name="e1" value="0" aria-label="0 poeng"></td>
-            <td class="score"><input type="radio" name="e1" value="1" aria-label="1 poeng"></td>
-            <td class="score"><input type="radio" name="e1" value="2" aria-label="2 poeng"></td>
-          </tr>
-
-          <tr>
-            <td>
-              Den digitale teknologien motiverer elevane/studentane til
-              å koma i gang med læringsarbeidet.
-            </td>
-            <td class="score"><input type="radio" name="e2" value="0" aria-label="0 poeng"></td>
-            <td class="score"><input type="radio" name="e2" value="1" aria-label="1 poeng"></td>
-            <td class="score"><input type="radio" name="e2" value="2" aria-label="2 poeng"></td>
-          </tr>
-
-          <tr>
-            <td>
-              Den digitale teknologien bidreg til at elevane/studentane går
-              frå å vera passive til å bli aktive og sosialt deltakande
-              i læringa, til dømes gjennom samarbeid og samskaping.
-            </td>
-            <td class="score"><input type="radio" name="e3" value="0" aria-label="0 poeng"></td>
-            <td class="score"><input type="radio" name="e3" value="1" aria-label="1 poeng"></td>
-            <td class="score"><input type="radio" name="e3" value="2" aria-label="2 poeng"></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="subtotal">
-        Poeng Engagement:
-        <span id="engagementScore">0</span> / 6
-      </div>
-    </section>
-
-
-    <!-- ENHANCEMENT -->
-
-    <section>
-      <h2>2. <em>Enhancement</em> – styrking av læringa</h2>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Vurderingspunkt</th>
-            <th class="score">0<br>Nei</th>
-            <th class="score">1<br>Delvis</th>
-            <th class="score">2<br>Ja</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>
-              Den digitale teknologien hjelper elevane/studentane med
-              å utvikla eller visa ei djupare forståing av læringsmåla
-              eller det faglege innhaldet, til dømes gjennom problemløysing,
-              skaping og høgare ordens tenking.
-            </td>
-            <td class="score"><input type="radio" name="h1" value="0" aria-label="0 poeng"></td>
-            <td class="score"><input type="radio" name="h1" value="1" aria-label="1 poeng"></td>
-            <td class="score"><input type="radio" name="h1" value="2" aria-label="2 poeng"></td>
-          </tr>
-
-          <tr>
-            <td>
-              Den digitale teknologien gir støtte som gjer omgrep, idear
-              eller fagleg innhald lettare å forstå, til dømes gjennom
-              tilpassing, differensiering eller stillasbygging.
-            </td>
-            <td class="score"><input type="radio" name="h2" value="0" aria-label="0 poeng"></td>
-            <td class="score"><input type="radio" name="h2" value="1" aria-label="1 poeng"></td>
-            <td class="score"><input type="radio" name="h2" value="2" aria-label="2 poeng"></td>
-          </tr>
-
-          <tr>
-            <td>
-              Den digitale teknologien gir elevane/studentane høve til å
-              visa forståinga si på måtar som ville vore vanskelege eller
-              umoglege med tradisjonelle verktøy.
-            </td>
-            <td class="score"><input type="radio" name="h3" value="0" aria-label="0 poeng"></td>
-            <td class="score"><input type="radio" name="h3" value="1" aria-label="1 poeng"></td>
-            <td class="score"><input type="radio" name="h3" value="2" aria-label="2 poeng"></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="subtotal">
-        Poeng Enhancement:
-        <span id="enhancementScore">0</span> / 6
-      </div>
-    </section>
-
-
-    <!-- EXTENSION -->
-
-    <section>
-      <h2>3. <em>Extension</em> – utviding av læringa</h2>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Vurderingspunkt</th>
-            <th class="score">0<br>Nei</th>
-            <th class="score">1<br>Delvis</th>
-            <th class="score">2<br>Ja</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>
-              Den digitale teknologien skapar høve for læring utover
-              den ordinære undervisningstida eller læringssituasjonen.
-            </td>
-            <td class="score"><input type="radio" name="x1" value="0" aria-label="0 poeng"></td>
-            <td class="score"><input type="radio" name="x1" value="1" aria-label="1 poeng"></td>
-            <td class="score"><input type="radio" name="x1" value="2" aria-label="2 poeng"></td>
-          </tr>
-
-          <tr>
-            <td>
-              Den digitale teknologien skapar ei bru mellom læringa
-              på skulen/studiestaden og erfaringar frå kvardagslivet.
-            </td>
-            <td class="score"><input type="radio" name="x2" value="0" aria-label="0 poeng"></td>
-            <td class="score"><input type="radio" name="x2" value="1" aria-label="1 poeng"></td>
-            <td class="score"><input type="radio" name="x2" value="2" aria-label="2 poeng"></td>
-          </tr>
-
-          <tr>
-            <td>
-              Den digitale teknologien bidreg til at elevane/studentane
-              utviklar autentiske ferdigheiter og kompetansar som dei
-              kan ha nytte av i kvardags-, studie- eller arbeidsliv.
-            </td>
-            <td class="score"><input type="radio" name="x3" value="0" aria-label="0 poeng"></td>
-            <td class="score"><input type="radio" name="x3" value="1" aria-label="1 poeng"></td>
-            <td class="score"><input type="radio" name="x3" value="2" aria-label="2 poeng"></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="subtotal">
-        Poeng Extension:
-        <span id="extensionScore">0</span> / 6
-      </div>
-    </section>
-
-
-    <!-- RESULTAT -->
-
-    <section>
-      <h2>Samla vurdering</h2>
-
-      <div class="resultat">
-
-        <div>
-          Engagement:
-          <strong><span id="sumEngagement">0</span> / 6</strong>
-        </div>
-
-        <div>
-          Enhancement:
-          <strong><span id="sumEnhancement">0</span> / 6</strong>
-        </div>
-
-        <div>
-          Extension:
-          <strong><span id="sumExtension">0</span> / 6</strong>
-        </div>
-
-        <div class="totalsum">
-          Total poengsum:
-          <span id="totalScore">0</span> / 18
-        </div>
-
-        <div id="trafficLight" class="trafikklys incomplete">
-          Svar på alle dei ni vurderingspunkta for å få ei samla vurdering.
-        </div>
-
-      </div>
-
-
-      <!-- Forklaring -->
-
-      <div class="legend">
-
-        <div class="legend-item green">
-          <strong>13–18 poeng – grønt lys</strong><br>
-          Svært sterk samanheng mellom teknologien, dei didaktiske vala
-          og læringsmåla. Teknologien bidreg tydeleg til engasjement,
-          styrking og utviding av læringa.
-        </div>
-
-        <div class="legend-item yellow">
-          <strong>7–12 poeng – gult lys</strong><br>
-          Det er ein samanheng mellom teknologien og læringsmåla,
-          men undervisningsopplegget bør vurderast nærare. Kan teknologien
-          eller dei didaktiske grepa i større grad styrkja eller utvida læringa?
-        </div>
-
-        <div class="legend-item red">
-          <strong>0–6 poeng – raudt lys</strong><br>
-          Samanhengen mellom teknologien og læringsmåla er svak.
-          Vurder om teknologien er nødvendig, om undervisningsdesignet
-          bør endrast, eller om andre arbeidsmåtar eignar seg betre.
-        </div>
-
-      </div>
-    </section>
-
-
-
-<!-- REFLEKSJON -->
-
-<details class="collapse-section">
-  <summary>Kort refleksjon</summary>
-
-  <div class="collapse-content">
-
-    <div class="form-group">
-      <label for="ref1">
-        På kva måte tilfører teknologien verdi til læringa?
-      </label>
-      <textarea id="ref1" name="ref1"></textarea>
-    </div>
-
-    <div class="form-group">
-      <label for="ref2">
-        Kva kunne vore endra for å styrkja undervisningsopplegget?
-      </label>
-      <textarea id="ref2" name="ref2"></textarea>
-    </div>
-
-    <div class="form-group">
-      <label for="ref3">
-        Kva av dei tre E-ane er sterkast i dette undervisningsopplegget –
-        og kva er svakast?
-      </label>
-      <textarea id="ref3" name="ref3"></textarea>
-    </div>
-
-  </div>
-</details>
-  
-<details class="collapse-section">
-  <summary>Personvern</summary>
-
-  <div class="collapse-content">
-    <p>
-      Opplysningane du skriv inn i dette skjemaet, blir behandla lokalt
-      i nettlesaren din. Dei blir ikkje sende til eller lagra av
-      denne nettsida.
+  <main class="triple-e">
+    <h1>Triple E – vurderingsskjema for undervisningsdesign</h1>
+
+    <p class="intro">
+      Skjemaet kan brukast til å vurdera i kva grad bruk av digital teknologi
+      tilfører verdi til læringa og støttar dei faglege læringsmåla.
+      Vurder kvart punkt med 0, 1 eller 2 poeng.
     </p>
 
-    <p>
-      Unngå å skriva namn eller andre personopplysningar om elevar,
-      studentar eller andre personar i tekstfelta.
-    </p>
+    <form id="tripleEForm">
+      <!-- OM UNDERVISNINGSOPPLEGGET -->
+      <details class="collapse-section" open>
+        <summary>Om undervisningsopplegget</summary>
+        <div class="collapse-content">
+          <div class="form-group">
+            <label for="fag">Fag / tema</label>
+            <input type="text" id="fag" name="fag">
+          </div>
 
-    <p>
-      Nettsida er publisert med GitHub Pages. GitHub kan registrera
-      tekniske opplysningar, som IP-adresse, i samband med drift og
-      tryggleik for tenesta.
-    </p>
-  </div>
-</details>
+          <div class="form-group">
+            <label for="trinn">Trinn / målgruppe</label>
+            <input type="text" id="trinn" name="trinn">
+          </div>
 
-    <!-- KNAPPAR -->
+          <div class="form-group">
+            <label for="maal">Læringsmål</label>
+            <textarea id="maal" name="maal"></textarea>
+          </div>
 
-    <div class="buttons">
-      <button type="button" onclick="window.print()">
-        Skriv ut / lagre som PDF
-      </button>
+          <div class="form-group">
+            <label for="teknologi">Digital teknologi / digitalt verktøy</label>
+            <textarea id="teknologi" name="teknologi"></textarea>
+          </div>
 
-      <button type="reset" class="secondary">
-        Nullstill skjemaet
-      </button>
-    </div>
+          <div class="form-group">
+            <label for="aktivitet">Kort skildring av undervisningsaktiviteten</label>
+            <textarea id="aktivitet" name="aktivitet"></textarea>
+          </div>
+        </div>
+      </details>
 
-  </form>
+      <!-- ENGAGEMENT -->
+      <section aria-labelledby="engagement-heading">
+        <h2 id="engagement-heading">1. <em>Engagement</em> – engasjement i læringa</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Vurderingspunkt</th>
+                <th scope="col" class="score">0<br>Nei</th>
+                <th scope="col" class="score">1<br>Delvis</th>
+                <th scope="col" class="score">2<br>Ja</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  Den digitale teknologien hjelper elevane/studentane med å halda
+                  merksemda retta mot oppgåva, aktiviteten og læringsmåla,
+                  med mindre distraksjon.
+                </td>
+                <td class="score"><input type="radio" name="e1" value="0" aria-label="Engagement punkt 1: 0 poeng, nei"></td>
+                <td class="score"><input type="radio" name="e1" value="1" aria-label="Engagement punkt 1: 1 poeng, delvis"></td>
+                <td class="score"><input type="radio" name="e1" value="2" aria-label="Engagement punkt 1: 2 poeng, ja"></td>
+              </tr>
+              <tr>
+                <td>
+                  Den digitale teknologien motiverer elevane/studentane til
+                  å koma i gang med læringsarbeidet.
+                </td>
+                <td class="score"><input type="radio" name="e2" value="0" aria-label="Engagement punkt 2: 0 poeng, nei"></td>
+                <td class="score"><input type="radio" name="e2" value="1" aria-label="Engagement punkt 2: 1 poeng, delvis"></td>
+                <td class="score"><input type="radio" name="e2" value="2" aria-label="Engagement punkt 2: 2 poeng, ja"></td>
+              </tr>
+              <tr>
+                <td>
+                  Den digitale teknologien bidreg til at elevane/studentane går
+                  frå å vera passive til å bli aktive og sosialt deltakande
+                  i læringa, til dømes gjennom samarbeid og samskaping.
+                </td>
+                <td class="score"><input type="radio" name="e3" value="0" aria-label="Engagement punkt 3: 0 poeng, nei"></td>
+                <td class="score"><input type="radio" name="e3" value="1" aria-label="Engagement punkt 3: 1 poeng, delvis"></td>
+                <td class="score"><input type="radio" name="e3" value="2" aria-label="Engagement punkt 3: 2 poeng, ja"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
+        <div class="subtotal" aria-live="polite">
+          Poeng Engagement: <span id="engagementScore">0</span> / 6
+        </div>
+      </section>
 
-  <footer>
-    Basert på <em>Triple E Framework</em> og
-    <em><a href=https://www.tripleeframework.com/triple-e-evaluation-rubric-for-lesson-design.html>Triple E Evaluation Rubric for Lesson Design</a></em> av Liz Kolb.
-    Nynorsk omsetjing og tilpassing ved Anders Grov Nilsen.
-    Triple E Framework er lisensiert under
-    Creative Commons Attribution–NonCommercial 4.0 International
-    (CC BY-NC 4.0).
-  </footer>
+      <!-- ENHANCEMENT -->
+      <section aria-labelledby="enhancement-heading">
+        <h2 id="enhancement-heading">2. <em>Enhancement</em> – styrking av læringa</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Vurderingspunkt</th>
+                <th scope="col" class="score">0<br>Nei</th>
+                <th scope="col" class="score">1<br>Delvis</th>
+                <th scope="col" class="score">2<br>Ja</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  Den digitale teknologien hjelper elevane/studentane med
+                  å utvikla eller visa ei djupare forståing av læringsmåla
+                  eller det faglege innhaldet, til dømes gjennom problemløysing,
+                  skaping og høgare ordens tenking.
+                </td>
+                <td class="score"><input type="radio" name="h1" value="0" aria-label="Enhancement punkt 1: 0 poeng, nei"></td>
+                <td class="score"><input type="radio" name="h1" value="1" aria-label="Enhancement punkt 1: 1 poeng, delvis"></td>
+                <td class="score"><input type="radio" name="h1" value="2" aria-label="Enhancement punkt 1: 2 poeng, ja"></td>
+              </tr>
+              <tr>
+                <td>
+                  Den digitale teknologien gir støtte som gjer omgrep, idear
+                  eller fagleg innhald lettare å forstå, til dømes gjennom
+                  tilpassing, differensiering eller stillasbygging.
+                </td>
+                <td class="score"><input type="radio" name="h2" value="0" aria-label="Enhancement punkt 2: 0 poeng, nei"></td>
+                <td class="score"><input type="radio" name="h2" value="1" aria-label="Enhancement punkt 2: 1 poeng, delvis"></td>
+                <td class="score"><input type="radio" name="h2" value="2" aria-label="Enhancement punkt 2: 2 poeng, ja"></td>
+              </tr>
+              <tr>
+                <td>
+                  Den digitale teknologien gir elevane/studentane høve til å
+                  visa forståinga si på måtar som ville vore vanskelege eller
+                  umoglege med tradisjonelle verktøy.
+                </td>
+                <td class="score"><input type="radio" name="h3" value="0" aria-label="Enhancement punkt 3: 0 poeng, nei"></td>
+                <td class="score"><input type="radio" name="h3" value="1" aria-label="Enhancement punkt 3: 1 poeng, delvis"></td>
+                <td class="score"><input type="radio" name="h3" value="2" aria-label="Enhancement punkt 3: 2 poeng, ja"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-</main>
+        <div class="subtotal" aria-live="polite">
+          Poeng Enhancement: <span id="enhancementScore">0</span> / 6
+        </div>
+      </section>
 
+      <!-- EXTENSION -->
+      <section aria-labelledby="extension-heading">
+        <h2 id="extension-heading">3. <em>Extension</em> – utviding av læringa</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Vurderingspunkt</th>
+                <th scope="col" class="score">0<br>Nei</th>
+                <th scope="col" class="score">1<br>Delvis</th>
+                <th scope="col" class="score">2<br>Ja</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  Den digitale teknologien skapar høve for læring utover
+                  den ordinære undervisningstida eller læringssituasjonen.
+                </td>
+                <td class="score"><input type="radio" name="x1" value="0" aria-label="Extension punkt 1: 0 poeng, nei"></td>
+                <td class="score"><input type="radio" name="x1" value="1" aria-label="Extension punkt 1: 1 poeng, delvis"></td>
+                <td class="score"><input type="radio" name="x1" value="2" aria-label="Extension punkt 1: 2 poeng, ja"></td>
+              </tr>
+              <tr>
+                <td>
+                  Den digitale teknologien skapar ei bru mellom læringa
+                  på skulen/studiestaden og erfaringar frå kvardagslivet.
+                </td>
+                <td class="score"><input type="radio" name="x2" value="0" aria-label="Extension punkt 2: 0 poeng, nei"></td>
+                <td class="score"><input type="radio" name="x2" value="1" aria-label="Extension punkt 2: 1 poeng, delvis"></td>
+                <td class="score"><input type="radio" name="x2" value="2" aria-label="Extension punkt 2: 2 poeng, ja"></td>
+              </tr>
+              <tr>
+                <td>
+                  Den digitale teknologien bidreg til at elevane/studentane
+                  utviklar autentiske ferdigheiter og kompetansar som dei
+                  kan ha nytte av i kvardags-, studie- eller arbeidsliv.
+                </td>
+                <td class="score"><input type="radio" name="x3" value="0" aria-label="Extension punkt 3: 0 poeng, nei"></td>
+                <td class="score"><input type="radio" name="x3" value="1" aria-label="Extension punkt 3: 1 poeng, delvis"></td>
+                <td class="score"><input type="radio" name="x3" value="2" aria-label="Extension punkt 3: 2 poeng, ja"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-<script>
-  const groups = {
-    engagement: ["e1", "e2", "e3"],
-    enhancement: ["h1", "h2", "h3"],
-    extension: ["x1", "x2", "x3"]
-  };
+        <div class="subtotal" aria-live="polite">
+          Poeng Extension: <span id="extensionScore">0</span> / 6
+        </div>
+      </section>
 
+      <!-- RESULTAT -->
+      <section aria-labelledby="resultat-heading">
+        <h2 id="resultat-heading">Samla vurdering</h2>
 
-  function getGroupScore(groupNames) {
-    let total = 0;
-    let answered = 0;
+        <div class="resultat">
+          <div>
+            Engagement: <strong><span id="sumEngagement">0</span> / 6</strong>
+          </div>
+          <div>
+            Enhancement: <strong><span id="sumEnhancement">0</span> / 6</strong>
+          </div>
+          <div>
+            Extension: <strong><span id="sumExtension">0</span> / 6</strong>
+          </div>
 
-    groupNames.forEach(name => {
-      const selected =
-        document.querySelector('input[name="' + name + '"]:checked');
+          <div class="totalsum">
+            Total poengsum: <span id="totalScore">0</span> / 18
+          </div>
 
-      if (selected) {
-        total += Number(selected.value);
-        answered++;
-      }
-    });
+          <div id="trafficLight" class="trafikklys incomplete" aria-live="polite">
+            Svar på alle dei ni vurderingspunkta for å få ei samla vurdering.
+          </div>
+        </div>
 
-    return {
-      total: total,
-      answered: answered
+        <div class="legend" aria-label="Forklaring av poengsum">
+          <div class="legend-item green">
+            <strong>13–18 poeng – grønt lys</strong><br>
+            Svært sterk samanheng mellom teknologien, dei didaktiske vala
+            og læringsmåla. Teknologien bidreg tydeleg til engasjement,
+            styrking og utviding av læringa.
+          </div>
+
+          <div class="legend-item yellow">
+            <strong>7–12 poeng – gult lys</strong><br>
+            Det er ein samanheng mellom teknologien og læringsmåla,
+            men undervisningsopplegget bør vurderast nærare. Kan teknologien
+            eller dei didaktiske grepa i større grad styrkja eller utvida læringa?
+          </div>
+
+          <div class="legend-item red">
+            <strong>0–6 poeng – raudt lys</strong><br>
+            Samanhengen mellom teknologien og læringsmåla er svak.
+            Vurder om teknologien er nødvendig, om undervisningsdesignet
+            bør endrast, eller om andre arbeidsmåtar eignar seg betre.
+          </div>
+        </div>
+      </section>
+
+      <!-- REFLEKSJON -->
+      <details class="collapse-section">
+        <summary>Kort refleksjon</summary>
+        <div class="collapse-content">
+          <div class="form-group">
+            <label for="ref1">På kva måte tilfører teknologien verdi til læringa?</label>
+            <textarea id="ref1" name="ref1"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="ref2">Kva kunne vore endra for å styrkja undervisningsopplegget?</label>
+            <textarea id="ref2" name="ref2"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="ref3">
+              Kva av dei tre E-ane er sterkast i dette undervisningsopplegget –
+              og kva er svakast?
+            </label>
+            <textarea id="ref3" name="ref3"></textarea>
+          </div>
+        </div>
+      </details>
+
+      <!-- PERSONVERN -->
+      <details class="collapse-section">
+        <summary>Personvern</summary>
+        <div class="collapse-content">
+          <p>
+            Opplysningane du skriv inn i dette skjemaet, blir behandla lokalt
+            i nettlesaren din. Dei blir ikkje sende til eller lagra av denne nettsida.
+          </p>
+
+          <p>
+            Unngå å skriva namn eller andre personopplysningar om elevar,
+            studentar eller andre personar i tekstfelta.
+          </p>
+
+          <p>
+            Nettsida er publisert med GitHub Pages. GitHub kan registrera
+            tekniske opplysningar, som IP-adresse, i samband med drift og
+            tryggleik for tenesta.
+          </p>
+        </div>
+      </details>
+
+      <!-- KNAPPAR -->
+      <div class="buttons">
+        <button type="button" id="printButton">Skriv ut / lagre som PDF</button>
+        <button type="reset" class="secondary">Nullstill skjemaet</button>
+      </div>
+    </form>
+
+    <footer>
+      Basert på <em>Triple E Framework</em> og
+      <em><a href="https://www.tripleeframework.com/triple-e-evaluation-rubric-for-lesson-design.html" target="_blank" rel="noopener noreferrer">Triple E Evaluation Rubric for Lesson Design</a></em>
+      av Liz Kolb. Nynorsk omsetjing og tilpassing ved Anders Grov Nilsen.
+      Triple E Framework er lisensiert under Creative Commons
+      Attribution–NonCommercial 4.0 International (CC BY-NC 4.0).
+    </footer>
+  </main>
+
+  <script>
+    const groups = {
+      engagement: ["e1", "e2", "e3"],
+      enhancement: ["h1", "h2", "h3"],
+      extension: ["x1", "x2", "x3"]
     };
-  }
 
+    const form = document.getElementById("tripleEForm");
+    const trafficLight = document.getElementById("trafficLight");
+    const printButton = document.getElementById("printButton");
 
-  function calculateScores() {
+    function getGroupScore(groupNames) {
+      let total = 0;
+      let answered = 0;
 
-    const engagement = getGroupScore(groups.engagement);
-    const enhancement = getGroupScore(groups.enhancement);
-    const extension = getGroupScore(groups.extension);
+      groupNames.forEach((name) => {
+        const selected = document.querySelector(`input[name="${name}"]:checked`);
+        if (selected) {
+          total += Number(selected.value);
+          answered += 1;
+        }
+      });
 
-    const total =
-      engagement.total +
-      enhancement.total +
-      extension.total;
-
-    const answered =
-      engagement.answered +
-      enhancement.answered +
-      extension.answered;
-
-
-    document.getElementById("engagementScore").textContent =
-      engagement.total;
-
-    document.getElementById("enhancementScore").textContent =
-      enhancement.total;
-
-    document.getElementById("extensionScore").textContent =
-      extension.total;
-
-
-    document.getElementById("sumEngagement").textContent =
-      engagement.total;
-
-    document.getElementById("sumEnhancement").textContent =
-      enhancement.total;
-
-    document.getElementById("sumExtension").textContent =
-      extension.total;
-
-    document.getElementById("totalScore").textContent =
-      total;
-
-
-    const trafficLight =
-      document.getElementById("trafficLight");
-
-
-    trafficLight.className = "trafikklys";
-
-
-    if (answered < 9) {
-
-      trafficLight.classList.add("incomplete");
-
-      trafficLight.innerHTML =
-        "Du har svart på <strong>" +
-        answered +
-        " av 9</strong> vurderingspunkt.";
-
+      return { total, answered };
     }
 
-    else if (total >= 13) {
+    function calculateScores() {
+      const engagement = getGroupScore(groups.engagement);
+      const enhancement = getGroupScore(groups.enhancement);
+      const extension = getGroupScore(groups.extension);
 
-      trafficLight.classList.add("green");
+      const total = engagement.total + enhancement.total + extension.total;
+      const answered = engagement.answered + enhancement.answered + extension.answered;
 
-      trafficLight.innerHTML =
-        "<strong>GRØNT LYS</strong><br>" +
-        "Sterk samanheng mellom bruk av teknologi, " +
-        "didaktiske val og læringsmål.";
+      document.getElementById("engagementScore").textContent = engagement.total;
+      document.getElementById("enhancementScore").textContent = enhancement.total;
+      document.getElementById("extensionScore").textContent = extension.total;
 
+      document.getElementById("sumEngagement").textContent = engagement.total;
+      document.getElementById("sumEnhancement").textContent = enhancement.total;
+      document.getElementById("sumExtension").textContent = extension.total;
+      document.getElementById("totalScore").textContent = total;
+
+      trafficLight.className = "trafikklys";
+
+      if (answered < 9) {
+        trafficLight.classList.add("incomplete");
+        trafficLight.innerHTML = `Du har svart på <strong>${answered} av 9</strong> vurderingspunkt.`;
+      } else if (total >= 13) {
+        trafficLight.classList.add("green");
+        trafficLight.innerHTML =
+          "<strong>GRØNT LYS</strong><br>" +
+          "Sterk samanheng mellom bruk av teknologi, didaktiske val og læringsmål.";
+      } else if (total >= 7) {
+        trafficLight.classList.add("yellow");
+        trafficLight.innerHTML =
+          "<strong>GULT LYS</strong><br>" +
+          "Teknologien støttar læringa, men det kan vera grunn til å vurdera enkelte delar av undervisningsdesignet.";
+      } else {
+        trafficLight.classList.add("red");
+        trafficLight.innerHTML =
+          "<strong>RAUDT LYS</strong><br>" +
+          "Vurder om teknologien tilfører tilstrekkeleg verdi til læringa, eller om undervisningsdesignet bør endrast.";
+      }
     }
 
-    else if (total >= 7) {
-
-      trafficLight.classList.add("yellow");
-
-      trafficLight.innerHTML =
-        "<strong>GULT LYS</strong><br>" +
-        "Teknologien støttar læringa, men det kan vera " +
-        "grunn til å vurdera enkelte delar av undervisningsdesignet.";
-
-    }
-
-    else {
-
-      trafficLight.classList.add("red");
-
-      trafficLight.innerHTML =
-        "<strong>RAUDT LYS</strong><br>" +
-        "Vurder om teknologien tilfører tilstrekkeleg verdi " +
-        "til læringa, eller om undervisningsdesignet bør endrast.";
-
-    }
-  }
-
-
-  document
-    .querySelectorAll('input[type="radio"]')
-    .forEach(radio => {
+    document.querySelectorAll('input[type="radio"]').forEach((radio) => {
       radio.addEventListener("change", calculateScores);
     });
 
-
-  document
-    .getElementById("tripleEForm")
-    .addEventListener("reset", () => {
-
-      setTimeout(() => {
-        calculateScores();
-      }, 0);
-
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
     });
-</script>
 
+    form.addEventListener("reset", () => {
+      setTimeout(calculateScores, 0);
+    });
+
+    let printDetailsState = [];
+
+    function openDetailsForPrint() {
+      const details = Array.from(document.querySelectorAll("details"));
+      printDetailsState = details.map((item) => item.open);
+      details.forEach((item) => {
+        item.open = true;
+      });
+    }
+
+    function restoreDetailsAfterPrint() {
+      const details = Array.from(document.querySelectorAll("details"));
+      details.forEach((item, index) => {
+        item.open = printDetailsState[index] ?? item.open;
+      });
+    }
+
+    printButton.addEventListener("click", () => {
+      window.print();
+    });
+
+    window.addEventListener("beforeprint", openDetailsForPrint);
+    window.addEventListener("afterprint", restoreDetailsAfterPrint);
+
+    calculateScores();
+  </script>
 </body>
 </html>
